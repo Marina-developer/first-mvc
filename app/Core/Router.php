@@ -4,7 +4,8 @@ namespace app\Core;
 
 use app\Core\Exception\NotFoundException;
 
-class Router {
+class Router
+{
 
     protected array $routes = [];
     public Request $request;
@@ -22,6 +23,7 @@ class Router {
     {
         $this->routes['get'][$path] = $callback;
     }
+
     public function post($path, $callback)
     {
         $this->routes['post'][$path] = $callback;
@@ -29,31 +31,30 @@ class Router {
 
     public function resolve()
     {
-       $path = $this->request->getPath();
-       $method = $this->request->method();
-       $callback = $this->routes[$method][$path] ?? false;
+        $path = $this->request->getPath();
+        $method = $this->request->method();
+        $callback = $this->routes[$method][$path] ?? false;
 
-      if ($callback === false)
-      {
-         throw new NotFoundException();
+        if ($callback === false) {
+            throw new NotFoundException();
 
-      }
-      if(is_string($callback)){
-          return Application::$app->view->renderView($callback);
-      }
-      if(is_array($callback)){
-          /** @var \app\Core\Controller $controller */
+        }
+        if (is_string($callback)) {
+            return Application::$app->view->renderView($callback);
+        }
+        if (is_array($callback)) {
+            /** @var \app\Core\Controller $controller */
 
-          $controller = new $callback[0]();
-          Application::$app->controller = $controller;
-          $controller->action = $callback[1];
-          $callback[0] = $controller;
+            $controller = new $callback[0]();
+            Application::$app->controller = $controller;
+            $controller->action = $callback[1];
+            $callback[0] = $controller;
 
-          foreach ($controller->getMiddlewares() as $middleware) {
-              $middleware->execute();
-          }
-      }
-     return call_user_func($callback, $this->request, $this->response);
+            foreach ($controller->getMiddlewares() as $middleware) {
+                $middleware->execute();
+            }
+        }
+        return call_user_func($callback, $this->request, $this->response);
     }
 
 }

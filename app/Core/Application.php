@@ -29,11 +29,10 @@ class Application
         $this->view = new View();
         $this->db = new Database($config['db']);
         $primaryValue = $this->session->get('user');
-        if($primaryValue){
+        if ($primaryValue) {
             $primaryKey = $this->userClass::primaryKey();
-           $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
-        }
-        else {
+            $this->user = $this->userClass::findOne([$primaryKey => $primaryValue]);
+        } else {
             $this->user = null;
         }
 
@@ -46,9 +45,9 @@ class Application
 
     public function run()
     {
-        try{
+        try {
             echo $this->router->resolve();
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             Application::$app->response->setStatusCode($e->getCode());
             echo $this->view->renderView('_error', [
                 'exception' => $e
@@ -76,7 +75,8 @@ class Application
         return true;
     }
 
-    public function logout() {
+    public function logout()
+    {
         $this->user = null;
         $this->session->remove('user');
     }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PhpProjectSharedConfiguration" php_language_level="7.4" />
+  <component name="PhpStepFilterConfiguration">
+    <skipped_functions>
+      <skipped_function name="app\Core\Router-&gt;resolve" />
+      <skipped_function name="app\Controllers\AuthController-&gt;register" />
+    </skipped_functions>
+  </component>
+</project>

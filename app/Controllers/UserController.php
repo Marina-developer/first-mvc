@@ -14,6 +14,7 @@ class UserController extends Controller
     {
         $this->registerMiddleware(new AuthMiddleware());
     }
+
     public function show()
     {
         $params = [
@@ -27,6 +28,7 @@ class UserController extends Controller
         $body = $request->getBody();
         return 'Handling submitted data';
     }
+
     public function profile()
     {
         return $this->render('Profile');

@@ -1,11 +1,12 @@
 <?php
 
-class m0001_initial {
+class m0001_initial
+{
 
     public function up()
     {
-$db = \app\Core\Application::$app->db;
-$SQL = "CREATE TABLE users (
+        $db = \app\Core\Application::$app->db;
+        $SQL = "CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
     email VARCHAR(255) NOT NULL,
     username VARCHAR(255) NOT NULL,
@@ -13,7 +14,7 @@ $SQL = "CREATE TABLE users (
     status TINYINT DEFAULT (0) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=INNODB;";
-$db->pdo->exec($SQL);
+        $db->pdo->exec($SQL);
     }
 
     public function down()

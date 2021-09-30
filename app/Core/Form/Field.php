@@ -19,8 +19,8 @@ class Field
     public function __construct(Model $model, string $attribute)
     {
         $this->type = self::TYPE_TEXT;
-        $this->model=$model;
-        $this->attribute=$attribute;
+        $this->model = $model;
+        $this->attribute = $attribute;
     }
 
     public function __toString()
@@ -41,10 +41,11 @@ class Field
             $this->model->hasError($this->attribute) ? ' is-invalid' : '',
             $this->model->getFirstError($this->attribute)
         );
-     }
-     public function passwordField()
-     {
-     $this->type = self::TYPE_PASSWORD;
-     return $this;
-     }
+    }
+
+    public function passwordField()
+    {
+        $this->type = self::TYPE_PASSWORD;
+        return $this;
+    }
 }

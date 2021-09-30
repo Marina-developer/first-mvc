@@ -11,15 +11,15 @@ use app\Models\User;
 use app\Core\Middlewares\AuthMiddleware;
 
 use app\Core\Model;
+
 class AuthController extends Controller
 {
     public function login(Request $request, Response $response)
     {
         $loginForm = new LoginForm();
-        if ($request->isPost()){
+        if ($request->isPost()) {
             $loginForm->loadData($request->getBody());
-            if($loginForm->validate() && $loginForm->login())
-            {
+            if ($loginForm->validate() && $loginForm->login()) {
                 $response->redirect('/');
                 return;
             }
@@ -39,7 +39,7 @@ class AuthController extends Controller
             if ($user->validate() && $user->save()) {
                 Application::$app->session->setFlash('success', 'Thanks for registering');
                 Application::$app->response->redirect('/');
-               // exit;
+                // exit;
 
             }
             return $this->render('Register', [
@@ -51,6 +51,7 @@ class AuthController extends Controller
             'model' => $user
         ]);
     }
+
     public function logout(Request $request, Response $response)
     {
         Application::$app->logout();

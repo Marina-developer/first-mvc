@@ -42,11 +42,10 @@ class Database
 
         }
 
-        if (!empty($newMigrations)){
+        if (!empty($newMigrations)) {
             $this->saveMigrations($newMigrations);
-        }
-        else {
-            $this->log("All migrations are applied". PHP_EOL);
+        } else {
+            $this->log("All migrations are applied" . PHP_EOL);
         }
     }
 
@@ -69,12 +68,12 @@ class Database
 
     public function saveMigrations(array $migrations)
     {
-        $str = implode(",",array_map(fn($m) => "('$m')", $migrations));
+        $str = implode(",", array_map(fn($m) => "('$m')", $migrations));
 
         $statement = $this->pdo->prepare("INSERT INTO migrations (migration) VALUES
        $str
         ");
-    $statement->execute();
+        $statement->execute();
     }
 
     public function prepare($sql)
@@ -84,6 +83,6 @@ class Database
 
     protected function log($message)
     {
-        echo '['.date('Y-m-d H:i:s').'] - '.$message.PHP_EOL;
+        echo '[' . date('Y-m-d H:i:s') . '] - ' . $message . PHP_EOL;
     }
 }

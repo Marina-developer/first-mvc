@@ -23,7 +23,7 @@ class User extends UserModel
         return 'users';
     }
 
-    public function PrimaryKey():string
+    public function PrimaryKey(): string
     {
         return 'id';
     }
@@ -41,7 +41,7 @@ class User extends UserModel
         return [
             'username' => [self::RULE_REQUIRED],
             'email' => [self::RULE_REQUIRED, self::RULE_EMAIL, [
-                self::RULE_UNIQUE,'class' => self::class,
+                self::RULE_UNIQUE, 'class' => self::class,
             ]],
             'password' => [self::RULE_REQUIRED, [self::RULE_MIN, 'min' => 8], [self::RULE_MAX, 'max' => 24]],
             'confirmPassword' => [self::RULE_REQUIRED, [self::RULE_MATCH, 'match' => 'password']],
@@ -53,7 +53,7 @@ class User extends UserModel
         return ['username', 'email', 'password', 'status'];
     }
 
-    public function labels():array
+    public function labels(): array
     {
         return [
             'username' => 'Username',
@@ -66,7 +66,7 @@ class User extends UserModel
 
     public function getDisplayName(): string
     {
-      return $this->username;
+        return $this->username;
     }
 
 }

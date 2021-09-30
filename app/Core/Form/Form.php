@@ -1,7 +1,9 @@
 <?php
 
 namespace app\Core\Form;
+
 use app\Core\Model;
+
 class Form
 {
     public static function begin($action, $method)

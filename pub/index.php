@@ -19,7 +19,6 @@ $config = [
 
 define('BP', dirname(__DIR__));
 define('DS', DIRECTORY_SEPARATOR);
-
 // Autoloader
 spl_autoload_register(function ($class) {
 

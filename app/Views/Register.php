@@ -1,36 +1,68 @@
 <?php
 /** @var $model \app\models\User */
 ?>
-<section class="vh-100" style="background-color: #508bfc;">
-    <div class="container py-5 h-100">
+
+<section class="vh-100" style="background-color: #fff;">
+    <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-12 col-md-8 col-lg-6 col-xl-5">
-                <div class="card shadow-2-strong" style="border-radius: 1rem;">
-                    <div class="card-body p-5 text-center">
+            <div class="col-lg-12 col-xl-11">
+                <div class="card text-black" style="border-radius: 25px;">
+                    <div class="card-body p-md-5">
+                        <div class="row justify-content-center">
+                            <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
 
-                        <h3 class="mb-5">Register</h3>
-                        <?php $form = \app\Core\Form\Form::begin('', 'post') ?>
-                        <div class="form-outline mb-4">
-                            <?php echo $form->field($model, 'username') ?>
+                                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4 fs-2 fw-medium">Register</p>
+
+                                <?php $form = \app\Core\Form\Form::begin('', 'post') ?>
+
+                                <div class="d-flex flex-row align-items-center mb-4 fs-5 fw-medium">
+                                    <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0 ">
+                                        <?php echo $form->field($model, 'username') ?>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4 fs-5 fw-medium">
+                                    <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <?php echo $form->field($model, 'email') ?>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4 fs-5 fw-medium">
+                                    <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <?php echo $form->field($model, 'password')->passwordField() ?>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-items-center mb-4 fs-5 fw-medium">
+                                    <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                                    <div class="form-outline flex-fill mb-0">
+                                        <?php echo $form->field($model, 'confirmPassword')->passwordField() ?>
+                                    </div>
+                                </div>
+
+                                <div class="form-check d-flex justify-content-center mb-5">
+                                    <p class="small fw-bold mt-2 pt-1 fs-4 fw-medium">I have an account? <a
+                                                href="/login" class="link-primary">Login</a></p>
+                                </div>
+
+                                <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                    <button class="btn btn-primary btn-lg fs-4 fw-medium" type="submit">Register
+                                    </button>
+                                </div>
+
+                                <?php \app\Core\Form\Form::end() ?>
+
+                            </div>
+                            <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                                <img src="https://mdbootstrap.com/img/Photos/new-templates/bootstrap-registration/draw1.png"
+                                     class="img-fluid" alt="Sample image">
+
+                            </div>
                         </div>
-
-                        <div class="form-outline mb-4">
-                            <?php echo $form->field($model, 'email') ?>
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <?php echo $form->field($model, 'password')->passwordField() ?>
-                        </div>
-
-                        <div class="form-outline mb-4">
-                            <?php echo $form->field($model, 'confirmPassword')->passwordField() ?>
-                        </div>
-
-                        <!-- Checkbox -->
-                        <button class="btn btn-primary btn-lg btn-block" type="submit">Register</button>
-                        <hr class="my-4">
-                        <?php \app\Core\Form\Form::end() ?>
-                        <p class="small fw-bold mt-2 pt-1 mb-0">I have an account? <a href="/Login" class="link-danger">Login</a></p>
                     </div>
                 </div>
             </div>
